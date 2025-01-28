@@ -1,0 +1,35 @@
+# Dependency directories (Node.js)
+node_modules/
+
+# Build directories (React app and production build)
+build/
+dist/
+
+# Environment configuration files (sensitive information)
+.env
+
+# Optional: Tailwind CSS (if any output files are generated or extra config files are added)
+public/tailwind.css
+
+# IDE/editor files
+.idea/
+.vscode/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Coverage reports (for testing)
+coverage/
+
+# Docker-related files (if using Docker)
+docker-compose.override.yml
+.docker/
+
+# Operating System files
+ehthumbs.db
