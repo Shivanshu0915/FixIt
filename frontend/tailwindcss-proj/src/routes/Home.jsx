@@ -62,22 +62,22 @@ const MidContent = () =>{
                     
                     <div className="bg-badami1 col-span-1 z-[3]">
                         <div className="bg-badami6 h-80 my-2 rounded-r-xl">kjdsfkl</div>
-                        <div className="bg-badami6 h-28 bottom-0 rounded-tr-xl">kjdsfkl</div>
+                        <div className="bg-badami6 h-32 bottom-0 rounded-tr-xl">kjdsfkl</div>
                     </div>
 
                     <div className= "bg-badami1 col-span-2 z-[1] pl-2 pr-1 pt-32">
                         <div className="bg-badami6 h-36 my-2 rounded-xl">kjdsfkl</div>
-                        <div className="bg-badami6 h-40 bottom-0 rounded-tl-xl rounded-tr-xl">kjdsfkl</div>
+                        <div className="bg-badami6 h-44 bottom-0 rounded-tl-xl rounded-tr-xl">kjdsfkl</div>
                     </div>
 
                     <div className="bg-badami1 col-span-2 pt-56 px-1">
-                        <div className="bg-badami6 h-56 bottom-0 rounded-tr-xl rounded-tl-xl">kjdsfkl</div>
+                        <div className="bg-badami6 h-60 bottom-0 rounded-tr-xl rounded-tl-xl">kjdsfkl</div>
                     </div>
                     <div className="bg-badami1 col-span-2 pt-72 px-1">
-                        <div className="bg-badami6 h-40 bottom-0 rounded-tr-xl rounded-tl-xl">kjdsfkl</div>
+                        <div className="bg-badami6 h-44 bottom-0 rounded-tr-xl rounded-tl-xl">kjdsfkl</div>
                     </div>
                     <div className="bg-badami1 col-span-2 pt-56 px-1">
-                        <div className="bg-badami6 h-56 bottom-0 rounded-tr-xl rounded-tl-xl">kjdsfkl</div>
+                        <div className="bg-badami6 h-60 bottom-0 rounded-tr-xl rounded-tl-xl">kjdsfkl</div>
                     </div>
                     <div className="bg-badami1 col-span-3 z-[3] pl-1 pr-7 pt-32">
                         <div className="bg-badami6 h-80 bottom-0 rounded-tr-xl rounded-tl-xl">kjdsfkl</div>
@@ -362,3 +362,5 @@ const Footer = ()=>{
         </footer>
     )
 }
+
+

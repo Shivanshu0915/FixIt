@@ -27,7 +27,14 @@ export default {
 
         // text and buttons
         'badami6' : '#2a1d09',
-        'btn-badami' : '#3f2c0e'
+        'btn-badami' : '#3f2c0e',
+
+        // student Main colors
+        'stubgdark': '#0E1113',
+        'stubgcard' : '#181C1F',
+        'stugreen' : '#32DE84',
+        'stured' : '#B01D1D',
+        'stumsg' : '#A06E22',
       },
       animation: {
         'slide-up': 'slideUp 1s ease-out',

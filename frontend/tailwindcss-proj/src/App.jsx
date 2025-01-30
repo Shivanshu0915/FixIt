@@ -1,8 +1,10 @@
-import {Home} from "./Components/Home"
+import {Home} from "./routes/Home"
+import { StudentMain } from "./routes/student/StudentMain"
 function App() {
   return (
     <> 
-      <Home></Home>
+      {/* <Home></Home> */}
+      <StudentMain></StudentMain>
     </>
   )
 }
