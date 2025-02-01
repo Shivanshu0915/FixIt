@@ -1,37 +1,67 @@
 import React from 'react';
 import { StudentNav } from '../../Components/Navbars';
 import { Sidebar } from '../../Components/Sidebars';
+import { useState } from 'react';
+import { StuMidFirst } from '../../Components/StuMidMain';
 
 export function StudentMain(){
     return(
-        <div className="h-[100vh] w-full bg-stubgdark">
+        <div className='h-[100vh]'>
             <StudentNav />
-            <MidContent></MidContent>
+            <Content></Content>
         </div>
     )
 }
 
-const MidContent = ()=>{
-    return(
-        <div className='flex w-full max-h-[90vh]'>
-            <Sidebar></Sidebar> 
+const Content = ()=>{
+    const menuItems = [
+        {
+            title : "Home",
+            icon : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" className="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+        },{
+            title : "Category",
+            icon : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" className="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+          </svg>,
+          
+            droplist : [
+                {
+                    title : "Mess",
+                    icon : <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M280-80v-366q-51-14-85.5-56T160-600v-280h80v280h40v-280h80v280h40v-280h80v280q0 56-34.5 98T360-446v366h-80Zm400 0v-320H560v-280q0-83 58.5-141.5T760-880v800h-80Z"/></svg>
+                },
+                {
+                    title : "Hostel",
+                    icon : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" className="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                  </svg>
+                  
+                }
+            ]
+        },{
+            title : "Mess Menu",
+            icon : <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+                <path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z"/>
+                </svg>
+        },{
+            title : "hr"
+        },{
+            title : "File a complaint",
+            icon : <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M560-80v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-300L683-80H560Zm300-263-37-37 37 37ZM620-140h38l121-122-18-19-19-18-122 121v38ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v120h-80v-80H520v-200H240v640h240v80H240Zm280-400Zm241 199-19-18 37 37-18-19Z"/></svg>
+        },{
+            title : "Track your Complaint",
+            icon : <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M824-80 716-188q-22 13-46 20.5t-50 7.5q-75 0-127.5-52.5T440-340q0-75 52.5-127.5T620-520q75 0 127.5 52.5T800-340q0 26-7.5 50T772-244l108 108-56 56ZM620-240q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Zm220-320h-80v-200h-80v120H280v-120h-80v560h200v80H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v200ZM480-760q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z"/></svg>
+        },{
+            title : "Resolved Complaints",
+            icon : <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M160-120q-33 0-56.5-23.5T80-200v-560q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v560q0 33-23.5 56.5T800-120H160Zm0-80h640v-560H160v560Zm40-80h200v-80H200v80Zm382-80 198-198-57-57-141 142-57-57-56 57 113 113Zm-382-80h200v-80H200v80Zm0-160h200v-80H200v80Zm-40 400v-560 560Z"/></svg>
+        }
+    ]
 
-            <div className='w-full flex bg-stubgdark justify-between'>
-                <div className='w-full bg-stubgdark max-h-[90vh] overflow-y-auto px-[2%]'>
-                    <div className='sticky z-20 bg-green-500 flex justify-between px-10 '>
-                            kjsdhfkjhdkjfd
-                    </div>
-                    <div className='bg-stubgcard text-gray-500 z-10'>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit vitae, possimus suscipit omnis rem ea iure non laboriosam, nulla repellendus, eius saepe. Nostrum, vero rerum! Numquam, minima rerum deleniti illo fugiat nulla suscipit consequatur natus, repudiandae doloribus accusamus delectus officiis vero repellendus omnis aliquam quibusdam mollitia vel iusto adipisci. Suscipit delectus natus error, voluptatibus expedita consectetur quo dolorem cupiditate repudiandae dolorum maxime incidunt, nobis similique. Omnis maxime eligendi consequuntur quae, totam sapiente eaque quasi, nostrum nulla libero rem tenetur! Earum quis mollitia suscipit quibusdam nihil nesciunt accusamus minima nobis error excepturi asperiores tenetur in sit at accusantium est delectus corporis, expedita debitis aperiam illum! Explicabo odio nulla corrupti suscipit perspiciatis ipsam veniam, adipisci doloremque aperiam nobis et excepturi autem alias optio officiis obcaecati eos iusto saepe? Dicta beatae enim deserunt, nulla quis cupiditate id maiores magnam laudantium? Eligendi minus aliquid eaque sit, atque tempora officia qui repellendus dignissimos laboriosam odio suscipit perferendis laudantium! Tempore, odit! Nesciunt nam, at consequatur quasi aut ab reiciendis ipsam, excepturi porro iste, cupiditate dolorem impedit fugit doloribus unde eaque exercitationem molestiae beatae possimus ipsa maiores earum odit molestias tenetur! Cumque aliquam similique inventore quam repellendus ad accusantium ea, consequuntur modi voluptatum eligendi quas dolor iste beatae? In sit minus, odit et fugit illo similique. Suscipit neque consequatur ea, nulla in distinctio cum consequuntur nihil consectetur quisquam non, porro nam magnam dolorem libero maxime! Provident vero dignissimos veritatis odit eius perspiciatis libero esse, sequi ipsa necessitatibus est, quasi, aut rem commodi culpa dolores animi! Repudiandae maxime, minus magnam voluptates corporis iure nisi eos tempora! Eligendi quos quae eaque animi culpa illo optio, aspernatur in ea odio fugit esse provident explicabo sint. Hic ducimus, vero necessitatibus quidem vitae magnam eveniet incidunt quae exercitationem consequatur architecto quo laboriosam explicabo accusantium aspernatur maxime id sequi autem omnis ut dolore tempora? Dicta minima iusto tempora odit pariatur impedit. Corporis illum natus consequatur hic exercitationem aliquam voluptates quidem dolorum. Nesciunt, suscipit hic provident distinctio fugit iusto sapiente id nam impedit voluptas facilis ullam quae, nihil ipsam sed excepturi, ex aperiam non placeat autem voluptatibus repellat expedita! Illum animi fugit reprehenderit asperiores ut, nihil adipisci tempora magnam iusto doloribus eum repellat corporis neque ex vitae ab tempore voluptatem sed non quo exercitationem aspernatur! Nemo, adipisci ipsa at soluta beatae voluptatum non fuga sunt dolor. Soluta quia et eligendi quisquam atque voluptas suscipit consequatur, sunt earum dolorum sequi, provident voluptatem dolores praesentium reiciendis architecto. Pariatur nam possimus eligendi, eos expedita reprehenderit perferendis doloribus excepturi similique illo dignissimos, ipsa voluptatibus porro sapiente voluptas accusamus non dolor animi! Voluptatem dolor aut corporis? Qui explicabo, labore molestiae voluptatem laborum ut fugiat illo itaque architecto recusandae cumque doloremque beatae commodi incidunt dolor repudiandae numquam dolorem, laboriosam tempora, minima non quam! Velit nesciunt tempora et suscipit assumenda asperiores nisi minima voluptate laboriosam, hic vel. Possimus excepturi non mollitia ad, incidunt impedit quod cum, perferendis inventore, earum deleniti molestiae modi aliquid sunt! Commodi non tempora totam repellat atque eveniet harum fuga minus quod vitae, dolore similique perspiciatis neque optio. Laudantium eos mollitia optio rerum consequuntur. Laborum assumenda, reprehenderit dicta veritatis explicabo accusamus nam, eligendi saepe maxime laboriosam, corrupti provident a perferendis est dolore distinctio consectetur eaque magnam alias ipsa nobis. Enim corrupti ad esse maiores minus! Et iste, tenetur tempore quo fugiat sed inventore commodi sequi quasi corrupti accusamus totam libero corporis repellendus dolores, fugit aspernatur aperiam animi praesentium debitis reprehenderit? Exercitationem hic similique reiciendis? Voluptates molestias voluptatum provident deserunt maxime, quasi fuga ipsum cupiditate est labore distinctio soluta veritatis tempore? Aliquid, consequatur tempore. Nulla quidem soluta, delectus dolorem laboriosam quo aspernatur nihil sequi magnam laborum aut, numquam dolor odit error adipisci. Debitis facilis sequi excepturi soluta in iusto, rerum, reiciendis deleniti voluptas voluptates dolores error fugiat mollitia quas quam molestias eaque eos vero ullam. Quibusdam placeat, dicta blanditiis sit accusantium quia quisquam neque earum. Officia delectus earum expedita labore mollitia iste voluptate quibusdam error modi, quam cumque assumenda magnam eaque similique! Asperiores maxime laudantium rem ea veniam, mollitia minus molestias ducimus, nobis animi nihil facilis quod debitis aspernatur quasi deserunt vitae sequi ut sint hic. Quo consequuntur eligendi provident vero? Tenetur cum delectus autem laboriosam voluptatum ut exercitationem impedit dolorem odit qui aperiam labore voluptate consequatur ducimus eaque, molestias voluptas quae consequuntur temporibus quia maxime earum ipsa! Atque, assumenda repellendus laboriosam iusto voluptatem quo molestiae non quasi sequi exercitationem ipsum praesentium. Ipsam placeat similique amet autem, aliquam dicta rerum fugit rem optio earum debitis sapiente atque. Nobis, libero? Officiis, fugit suscipit voluptate culpa commodi doloremque vitae praesentium non a, dicta quia cum nostrum repudiandae esse placeat, est ex sed minima animi laboriosam voluptatem. Quibusdam qui, nam, iure harum aspernatur exercitationem ipsa delectus voluptatibus doloremque libero sed nihil quod tenetur voluptate, aut vero est! Amet vitae delectus maiores nihil magnam, doloremque, eveniet, exercitationem ex animi voluptatem facilis repellat dolorum. Et ducimus repellat placeat, expedita aperiam deleniti saepe quas nihil iste consequuntur dignissimos sint amet! Soluta quam illum reiciendis velit minus maxime ducimus, cumque vero possimus suscipit vel veritatis eius unde quas autem impedit quisquam nemo? Deleniti qui tempora, voluptatem quo eius aliquam enim eos facilis architecto aliquid est, molestias optio repellat omnis harum reprehenderit possimus eveniet sequi esse? Eius impedit laborum maiores incidunt! Enim, accusamus omnis et a nobis quasi distinctio magni recusandae, impedit iusto nemo officia voluptatum. Illo iusto perspiciatis optio sed quisquam rerum, ullam aliquid a, in dolorem vero facilis incidunt saepe obcaecati doloremque distinctio inventore aliquam.
-                    </div>
-                </div>
-                <div className='hidden lg:block bg-blue-600 px-10 max-w-80'>
-                    <div className='bg-yellow-300 h-[70vh]'>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus sit cum quos illum. Maxime, ducimus mollitia atque perferendis sed aliquam. Corrupti iure nemo sit quam sequi. Quo rerum pariatur ab eum voluptates doloribus, suscipit aspernatur minus. Hic mollitia rerum voluptas, iusto, temporibus unde ratione aliquam porro, dignissimos doloribus deleniti impedit?
-                    </div>
-                </div>
-            </div>
+    return(
+        <div className="h-[calc(100vh-60px)] flex">
+            <Sidebar menuItems={menuItems}></Sidebar> 
+            <StuMidFirst></StuMidFirst>
         </div>
     )
-
 }

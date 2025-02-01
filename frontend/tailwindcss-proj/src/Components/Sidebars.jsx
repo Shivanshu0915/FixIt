@@ -1,8 +1,10 @@
 import {useState, useEffect} from 'react'
 
-export function Sidebar() {
+export function Sidebar(props) {
+
   const [isOpen, setIsOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [isExpand, setIsExpand] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -16,10 +18,10 @@ export function Sidebar() {
   }, []);
 
   return (
-    <div>
+    <div className="h-[calc(100% - 60px)] bg-stubgdark">
       {/* Hamburger icon */}
-      <button className="md:hidden fixed top-20 left-4 z-50 p-2 rounded-md bg-white shadow-lg" onClick={() => setIsOpen(!isOpen)}>
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button className="md:hidden fixed top-[70px] left-6 z-50 p-2 rounded-md bg-stubgcard/80 backdrop-blur-sm shadow-lg" onClick={() => setIsOpen(!isOpen)}>
+        <svg className="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24">
           {isOpen ? (
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
           ) : (
@@ -29,26 +31,72 @@ export function Sidebar() {
       </button>
 
       {/* Sidebar */}
-      <div
-        className={`${isOpen ? "translate-x-0" : "-translate-x-full"} transform fixed md:relative md:translate-x-0 z-40 w-72 h-[90vh] bg-white shadow-lg transition-transform duration-300 ease-in-out`}>
-        <div className="p-4">
-          <h2 className="text-xl font-semibold mb-6 text-gray-800">Menu</h2>
-          {/* <nav> */}
-            {/* <ul className="space-y-2">
-              {menuItems.map((item) => (
-                <li key={item.title}>
-                  <a
-                    href={item.href}
-                    className="flex items-center gap-3 p-3 text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
-                  >
-                    <item.icon className="w-5 h-5" />
-                    <span>{item.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul> */}
-          {/* </nav> */}
+      <div className={`${isOpen ? "translate-x-0" : "-translate-x-full"} transform fixed md:relative md:translate-x-0 z-40 w-72 h-[calc(100vh-60px)] bg-stubgdark border-r-[1px] border-gray-600 transition-transform duration-300 ease-in-out`}>
+        
+        <div className="">
+          <nav className='max-h-[calc(100vh-60px)] px-3 pt-6 pb-4 overflow-auto scrollbar-thin scrollbar-webkit'>
+              {props.menuItems.map((item)=>{
+                if(item.title == "hr"){
+                  return(
+                    <hr class="border-t-2 border-gray-700 mt-[20%] mb-[10%]" />
+                  )
+                }
+                else if(item.title == "Category"){
+                  return(
+                    <>
+                      <div className='bg-stubgdark m-2 flex items-center px-3 py-3 hover:bg-stubgcard rounded-sm cursor-pointer'
+                        onClick={()=>{setIsExpand(!isExpand)}}>
+                        <div className='flex items-center'>
+                          {item.icon}
+                        </div>
+                        <div className='text-white text-lg font-normal pl-3 flex items-center'>
+                          Choose Category
+                        </div>
+
+                        <div className='flex items-center pl-2'>
+                            {isExpand ? (
+                              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg>
+                            ) : (
+                              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+                            )}
+                        </div>
+
+                      </div>
+
+                      <div className={`${isExpand ? "block" : "hidden"}`}>
+                        {item.droplist.map((expItem)=>{
+                          return(
+                            <div className='bg-stubgdark m-2 flex items-center px-6 py-3 hover:bg-stubgcard rounded-sm cursor-pointer'>
+                              <div className='flex items-center'>
+                                {expItem.icon}
+                              </div>
+                              <div className='text-white text-lg font-normal pl-3 flex items-center'>
+                                {expItem.title}
+                              </div>
+                            </div>
+                          )
+                        })}
+
+                      </div>
+                    </>
+                  )
+                }
+                else{
+                  return(
+                    <div className='bg-stubgdark m-2 flex items-center px-3 py-3 hover:bg-stubgcard rounded-sm cursor-pointer'>
+                        <div className='flex items-center '>
+                          {item.icon}
+                        </div>
+                        <div className='text-white text-lg font-normal pl-3 flex items-center'>
+                          {item.title}
+                        </div>
+                    </div>
+                  )
+                }
+              })}
+          </nav>
         </div>
+
       </div>
 
       {/* Overlay for mobile */}
