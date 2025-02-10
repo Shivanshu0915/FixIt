@@ -42,17 +42,17 @@ const Navbar = () =>{
             </div>
 
             <div className="flex px-1 items-center gap-3">
-                <div className="bg-btn-badami text-white p-6 px-4 py-1 border-[1px] border-btn-bg-btn-badami rounded-md font-medium cursor-pointer hover:bg-btn-badami/85">
                 <Link to="/login">
-                Login
-                </Link>
+                <div className="bg-btn-badami text-white p-6 px-4 py-1 border-[1px] border-btn-bg-btn-badami rounded-md font-medium cursor-pointer hover:bg-btn-badami/85">
+                    Login
                 </div>
-                <div className="text-badami6 bg-white border-[1px] box-border border-btn-badami rounded-md px-4 py-1 font-medium cursor-pointer hover:bg-btn-badami hover:text-white">
+                </Link>
+
                 <Link to="/signup">
-                SignUp
-                </Link>
-                
+                <div className="text-badami6 bg-white border-[1px] box-border border-btn-badami rounded-md px-4 py-1 font-medium cursor-pointer hover:bg-btn-badami hover:text-white">
+                    SignUp
                 </div>
+                </Link>
             </div>
         </nav>
     )
@@ -104,11 +104,13 @@ const MidContent = () =>{
                         <div className="text-lg py-1 text-badami6">
                             Get Started ...
                         </div>
+                        <Link to="/login">
                         <div className="bg-orange1 h-5/6 px-2 flex items-center rounded cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
                                 <path fill-rule="evenodd" d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                             </svg>
                         </div>
+                        </Link>
                     </div>
                 </div>    
             </div>

@@ -2,9 +2,11 @@ import {useState, useEffect} from 'react'
 
 export function Sidebar(props) {
 
+  const isAdmin = true;
   const [isOpen, setIsOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [isExpand, setIsExpand] = useState(false);
+  const [isMess, setIsMess] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -41,6 +43,24 @@ export function Sidebar(props) {
                     <hr class="border-t-2 border-gray-700 mt-[20%] mb-[10%]" />
                   )
                 }
+                else if(item.title == "Meal ratings" || item.title == "Mess Menu"){
+                  return(
+                    <div>
+                        {(isAdmin == true && isMess == true) ? (
+                          <div className='bg-stubgdark m-2 flex items-center px-3 py-3 hover:bg-stubgcard rounded-sm cursor-pointer'>
+                            <div className='flex items-center '>
+                              {item.icon}
+                            </div>
+                            <div className='text-white text-lg font-normal pl-3 flex items-center'>
+                              {item.title}
+                            </div>
+                        </div>
+                        ) : (
+                          <></>
+                        )}
+                    </div>
+                  )
+                }
                 else if(item.title == "Category"){
                   return(
                     <>
@@ -62,11 +82,15 @@ export function Sidebar(props) {
                         </div>
 
                       </div>
-
                       <div className={`${isExpand ? "block" : "hidden"}`}>
                         {item.droplist.map((expItem)=>{
                           return(
-                            <div className='bg-stubgdark m-2 flex items-center px-6 py-3 hover:bg-stubgcard rounded-sm cursor-pointer'>
+                            <div className='bg-stubgdark m-2 flex items-center px-6 py-3 hover:bg-stubgcard rounded-sm cursor-pointer'
+                            onClick={()=>{
+                              if(isAdmin && expItem.title == "Mess"){
+                                setIsMess(!isMess);
+                              }
+                            }}>
                               <div className='flex items-center'>
                                 {expItem.icon}
                               </div>

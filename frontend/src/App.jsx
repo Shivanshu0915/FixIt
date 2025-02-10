@@ -4,6 +4,7 @@ import LoginPage from "./routes/Login.jsx"
 import Signup from "./routes/Signup.jsx"
 import { StudentMain } from "./routes/Students/StudentMain.jsx";
 import OTPPage from "./routes/OTP.jsx";
+import { AdminMain } from "./routes/Authorities/AdminMain.jsx";
 
 const App= createBrowserRouter(
     createRoutesFromElements(
